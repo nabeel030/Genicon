@@ -1,0 +1,77 @@
+.icon-span {
+  color: #00000094;
+  font-size: 45px;
+  margin: 25px;
+  cursor: pointer;
+}
+
+.platform-container {
+  background-color: #fff;
+  font-size: 45px;
+  margin: 25px;
+  border-radius: 10px;
+}
+
+header.platform-widgets-container {
+  padding-top: 3rem;
+  text-align: center;
+  color: #000;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+}
+header.platform-widgets-container .platform-widgets-subheading {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  margin-bottom: 25px;
+  font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+header.platform-widgets-container .platform-widgets-heading {
+  font-size: 3.25rem;
+  line-height: 3.25rem;
+  margin-bottom: 2rem;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+header.platform-widgets-container .platform-widgets {
+  border-radius: 20px;
+  background-color: #0e0e0e08;
+  font-size: 15px;
+  padding: 20px;
+}
+
+header.platform-widgets-container .platform-widgets .remove-widget {
+  font-size: 20px;
+  color: red;
+  cursor: pointer;
+}
+
+.platform-widgets-form {
+  text-align: left;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.input-group-span {
+  background-color: #fff !important;
+}
+
+.floating-icon {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
