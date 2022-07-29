@@ -7,67 +7,88 @@ function Widget() {
     const [enableMsger, setEnableMsger] = useState(false)
     const [enableTwitter, setEnableTwitter] = useState(false)
     const [enableCall, setEnableCall] = useState(false)
+    const [script,  setScript] = useState(null)
+
     const [metaData, setMetaData] = useState({
         position: 'right',
         bottom: '0',
         message: 'Message'
     })
 
-    const defaultWhatsapp = {
-        contact: '#',
+    const defaultLinks = {
+        whatsapp: '#',
+        instagram: '#',
+        skype: '#',
+        messenger: '#',
+        twitter: '#',
+        call: '#'
     }
 
-    const defaultInstagram = {
-        url: '#',
-    }
-
-    const [whatsappData, setWhatsappData] = useState(defaultWhatsapp)
-    const [instaUrl, setInstaUrl] = useState('#')
-    const [skypeData, setSkypeData] = useState(defaultInstagram)
-    const [msgerData, setMsgerData] = useState(defaultInstagram)
-    const [twitterData, setTwitterData] = useState(defaultInstagram)
-    const [callData, setCallData] = useState(defaultWhatsapp)
-    const [code, setCode] = useState(null);
+    const [links, setLinks] = useState(defaultLinks);
 
     const selectPlatform = (type) => {
         switch(type) {
             case 'whatsapp':
                 setEnableWhatsapp(!enableWhatsapp);
                 if(!enableWhatsapp) {
-                    setWhatsappData(defaultWhatsapp)
+                    setLinks({
+                        ...links,
+                        whatsapp: '#'
+                    })
                 }
                 break
             case 'instagram':
                 setEnableInsta(!enableInsta);
                 if(!enableInsta) {
-                    setInstaUrl(instaUrl)
+                    setLinks({
+                        ...links,
+                        instagram: '#'
+                    })
                 }
 
                 break
             case 'skype':
                 setEnableSkype(!enableSkype);
                 if(!enableSkype) {
-                    setWhatsappData(defaultInstagram)
+                    setLinks({
+                        ...links,
+                        skype: '#'
+                    })
                 }
 
                 break
             case 'messenger':
                 setEnableMsger(!enableMsger);
-                if(!enableSkype) {
-                    setWhatsappData(defaultInstagram)
+                if(!enableMsger) {
+                    setLinks({
+                        ...links,
+                        messenger: '#'
+                    })
                 }
 
                 break
             case 'twitter':
                 setEnableTwitter(!enableTwitter);
+                if(!enableTwitter) {
+                    setLinks({
+                        ...links,
+                        twitter: '#'
+                    })
+                }
                 break
             default:
                 setEnableCall(!enableCall)
+                if(!enableCall) {
+                    setLinks({
+                        ...links,
+                        call: '#'
+                    })
+                }
         }
     }   
 
     const getCode = () => {
-        console.log('tes')
+        window.URL.createObjectURL(new Blob(["CONTENT"], {type: "text/plain"}));
     }
 
     const getIconSpans = () => {
@@ -78,12 +99,12 @@ function Widget() {
         const twitterIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16"><path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/></svg>'
         const callIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/></svg>'
         
-        const whatsappSpan = enableWhatsapp ? `<a href="#" style="margin-bottom: 15px">${waIcon}</a>` : '';
-        const msgerSpan = enableMsger ? `<a href="#" style="margin-bottom: 15px">${msgerIcon}</a>` : '';
-        const instaSpan = enableInsta ? `<a href="${instaUrl}" style="margin-bottom: 15px">${instaIcon}</a>` : '';
-        const skypeSpan = enableSkype ? `<a href="#" style="margin-bottom: 15px">${skypeIcon}</a>` : '';
-        const twitterSpan = enableTwitter ? `<a href="#" style="margin-bottom: 15px">${twitterIcon}</a>` : '';
-        const callSpan = enableCall ? `<a href="#" style="margin-bottom: 15px">${callIcon}</a>` : '';
+        const whatsappSpan = enableWhatsapp ? `<a href="${links.whatsapp}" style="margin-bottom: 15px; color: #38eb38">${waIcon}</a>` : '';
+        const msgerSpan = enableMsger ? `<a href="${links.messenger}" style="margin-bottom: 15px; color: #006aff">${msgerIcon}</a>` : '';
+        const instaSpan = enableInsta ? `<a href="${links.instagram}" style="margin-bottom: 15px; color: #f5768c">${instaIcon}</a>` : '';
+        const skypeSpan = enableSkype ? `<a href="${links.skype}" style="margin-bottom: 15px; color: #00aff0">${skypeIcon}</a>` : '';
+        const twitterSpan = enableTwitter ? `<a href="${links.twitter}" style="margin-bottom: 15px; color: 00acee">${twitterIcon}</a>` : '';
+        const callSpan = enableCall ? `<a href=${links.call}" style="margin-bottom: 15px; color: #ff8d00cf">${callIcon}</a>` : '';
 
         return {whatsappSpan, msgerSpan, instaSpan, skypeSpan, twitterSpan, callSpan}
     }
@@ -105,7 +126,7 @@ function Widget() {
         mainDiv.style = `${containerStyle}`;
         document.body.appendChild(mainDiv);
 
-        let script = `
+        let scriptCode = `
             <script>
                 var mainDiv = document.createElement("div"); 
                 mainDiv.id = "widgetsContainer"; 
@@ -122,13 +143,13 @@ function Widget() {
             </script>
         `;
 
-        setCode(script)
+        setScript(scriptCode)
     }
 
     
     useEffect(() => {
         generateCode()
-    }, [enableWhatsapp, enableInsta, enableMsger, enableSkype, enableTwitter, enableCall, instaUrl])
+    }, [enableWhatsapp, enableInsta, enableMsger, enableSkype, enableTwitter, enableCall, links, metaData])
 
     return (
         <>
@@ -165,7 +186,7 @@ function Widget() {
                                                     <i className="bi bi-whatsapp"></i>
                                                 </span>
                                                 <input type='number' className='form-control' placeholder='whatsapp number'
-                                                    onChange={(e) => setWhatsappData({...whatsappData, contact: e.target.value})}
+                                                    onChange={(e) => setLinks({...links, whatsapp: e.target.value})}
                                                 />
                                                 <span className='input-group-text remove-widget' onClick={() => selectPlatform('whatsapp')}>
                                                     <i className="bi bi-x"></i>
@@ -186,7 +207,7 @@ function Widget() {
                                                     <i className="bi bi-instagram"></i>
                                                 </span>
                                                 <input type='text' className='form-control' placeholder='Instagram URL'
-                                                    onChange={(e) => setInstaUrl(e.target.value)} />
+                                                    onChange={(e) => setLinks({...links, instagram: e.target.value})} />
                                                 <span className='input-group-text remove-widget' onClick={() => selectPlatform('instagram')}>
                                                     <i className="bi bi-x"></i>
                                                 </span>
@@ -206,7 +227,7 @@ function Widget() {
                                                     <i className="bi bi-skype"></i>                        
                                                 </span>
                                                 <input type='text' className='form-control' placeholder='Skype URL' 
-                                                    onChange={(e) => setSkypeData({...skypeData, url: e.target.value})}/>
+                                                    onChange={(e) => setLinks({...links, skype: e.target.value})}/>
                                                 <span className='input-group-text remove-widget' onClick={() => selectPlatform('skype')}>
                                                     <i className="bi bi-x"></i>
                                                 </span>
@@ -226,7 +247,7 @@ function Widget() {
                                                     <i className="bi bi-messenger"></i>
                                                 </span>
                                                 <input type='text' className='form-control' placeholder='Facebook messenger' 
-                                                    onChange={(e) => setMsgerData({...msgerData, url: e.target.value})}/>
+                                                    onChange={(e) => setLinks({...links, messenger: e.target.value})}/>
                                                 <span className='input-group-text remove-widget' onClick={() => selectPlatform('messenger')}>
                                                     <i className="bi bi-x"></i>
                                                 </span>
@@ -246,7 +267,7 @@ function Widget() {
                                                     <i className="bi bi-twitter"></i>
                                                 </span>
                                                 <input type='text' className='form-control' placeholder='Twitter URL' 
-                                                    onChange={(e) => setTwitterData({...twitterData, url: e.target.value})}/>
+                                                    onChange={(e) => setLinks({...links, twitter: e.target.value})}/>
                                                 <span className='input-group-text remove-widget' onClick={() => selectPlatform('twitter')}>
                                                     <i className="bi bi-x"></i>
                                                 </span>
@@ -266,7 +287,7 @@ function Widget() {
                                                     <i className="bi bi-telephone"></i>
                                                 </span>
                                                 <input type='number' className='form-control' placeholder='Phone number' 
-                                                    onChange={(e) => setCallData({...callData, contact: e.target.value})}/>
+                                                    onChange={(e) => setLinks({...links, call: e.target.value})}/>
                                                 <span className='input-group-text remove-widget' onClick={() => selectPlatform('call')}>
                                                     <i className="bi bi-x"></i>
                                                 </span>
@@ -324,9 +345,10 @@ function Widget() {
                             <div className="platform-widgets-heading">
                                 <div className='row justify-content-md-center'>
                                     <div className='col-md-6 platform-widgets'>
-                                        <button className='btn btn-success' onClick={() => getCode()}>Dowload script file</button>
-                                        {/* <h5>Copy the below generated code and paste just before the closing body tag</h5>
-                                        <textarea value={code}></textarea> */}
+                                        <a className='btn btn-success' download='social-widgets.js' 
+                                            href={window.URL.createObjectURL(new Blob([script], {type: "text/plain"}))}>
+                                            Dowload script file
+                                        </a>
                                     </div>
                                 </div>
                             </div>
