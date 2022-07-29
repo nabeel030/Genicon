@@ -1,0 +1,34 @@
+.widget-circle{
+	width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    color: white;
+}
+.widget-circle svg{
+	margin: auto;
+}
+
+.widget-circle:hover{
+	color: white;
+}
+
+.widget-skype{
+	background: rgb(0, 175, 240);
+}
+
+.widget-insta{
+	background: rgb(245, 118, 140);
+}
+
+.widget-messenger{
+	background: rgb(0, 106, 255);
+}
+
+.widget-twitter{
+	background: rgb(0, 172, 238);
+}
+
+.widget-whatsapp{
+	background: #075e54;
+}
