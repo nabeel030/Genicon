@@ -4,7 +4,9 @@
     border-radius: 50%;
     display: flex;
     color: white;
+    margin-bottom: 15px;
 }
+
 .widget-circle svg{
 	margin: auto;
 }
