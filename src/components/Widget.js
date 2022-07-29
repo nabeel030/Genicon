@@ -111,7 +111,7 @@ function Widget() {
 
     const generateCode = () => {
         const spans = getIconSpans();
-        const containerStyle = `display: flex; flex-direction: column; position: absolute; ${metaData.position}: 25px; bottom: ${metaData.bottom}px;`;
+        const containerStyle = `display: flex; flex-direction: column; position: fixed; ${metaData.position}: 25px; bottom: ${metaData.bottom}px;`;
 
         var mainDiv = document.getElementById('widgetsContainer');
         
