@@ -104,7 +104,7 @@ function Widget() {
         const instaSpan = enableInsta ? `<a href="${links.instagram}" style="margin-bottom: 15px; color: #f5768c">${instaIcon}</a>` : '';
         const skypeSpan = enableSkype ? `<a href="${links.skype}" style="margin-bottom: 15px; color: #00aff0">${skypeIcon}</a>` : '';
         const twitterSpan = enableTwitter ? `<a href="${links.twitter}" style="margin-bottom: 15px; color: 00acee">${twitterIcon}</a>` : '';
-        const callSpan = enableCall ? `<a href=${links.call}" style="margin-bottom: 15px; color: #ff8d00cf">${callIcon}</a>` : '';
+        const callSpan = enableCall ? `<a href="${links.call}" style="margin-bottom: 15px; color: #ff8d00cf">${callIcon}</a>` : '';
 
         return {whatsappSpan, msgerSpan, instaSpan, skypeSpan, twitterSpan, callSpan}
     }
@@ -142,8 +142,7 @@ function Widget() {
                 document.body.appendChild(mainDiv);
             </script>
         `;
-
-        setScript(scriptCode)
+        setScript(scriptCode.replace(/<!--(.*?)-->|\s\B/gm, ''))
     }
 
     
