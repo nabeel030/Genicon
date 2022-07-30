@@ -8,6 +8,7 @@ function Widget() {
     const [enableTwitter, setEnableTwitter] = useState(false)
     const [enableCall, setEnableCall] = useState(false)
     const [script,  setScript] = useState(null)
+    const [show, setShow] = useState(false);
 
     const [metaData, setMetaData] = useState({
         position: 'right',
@@ -98,19 +99,22 @@ function Widget() {
         const skypeIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-skype" viewBox="0 0 16 16"><path d="M4.671 0c.88 0 1.733.247 2.468.702a7.423 7.423 0 0 1 6.02 2.118 7.372 7.372 0 0 1 2.167 5.215c0 .344-.024.687-.072 1.026a4.662 4.662 0 0 1 .6 2.281 4.645 4.645 0 0 1-1.37 3.294A4.673 4.673 0 0 1 11.18 16c-.84 0-1.658-.226-2.37-.644a7.423 7.423 0 0 1-6.114-2.107A7.374 7.374 0 0 1 .529 8.035c0-.363.026-.724.08-1.081a4.644 4.644 0 0 1 .76-5.59A4.68 4.68 0 0 1 4.67 0zm.447 7.01c.18.309.43.572.729.769a7.07 7.07 0 0 0 1.257.653c.492.205.873.38 1.145.523.229.112.437.264.615.448.135.142.21.331.21.528a.872.872 0 0 1-.335.723c-.291.196-.64.289-.99.264a2.618 2.618 0 0 1-1.048-.206 11.44 11.44 0 0 1-.532-.253 1.284 1.284 0 0 0-.587-.15.717.717 0 0 0-.501.176.63.63 0 0 0-.195.491.796.796 0 0 0 .148.482 1.2 1.2 0 0 0 .456.354 5.113 5.113 0 0 0 2.212.419 4.554 4.554 0 0 0 1.624-.265 2.296 2.296 0 0 0 1.08-.801c.267-.39.402-.855.386-1.327a2.09 2.09 0 0 0-.279-1.101 2.53 2.53 0 0 0-.772-.792A7.198 7.198 0 0 0 8.486 7.3a1.05 1.05 0 0 0-.145-.058 18.182 18.182 0 0 1-1.013-.447 1.827 1.827 0 0 1-.54-.387.727.727 0 0 1-.2-.508.805.805 0 0 1 .385-.723 1.76 1.76 0 0 1 .968-.247c.26-.003.52.03.772.096.274.079.542.177.802.293.105.049.22.075.336.076a.6.6 0 0 0 .453-.19.69.69 0 0 0 .18-.496.717.717 0 0 0-.17-.476 1.374 1.374 0 0 0-.556-.354 3.69 3.69 0 0 0-.708-.183 5.963 5.963 0 0 0-1.022-.078 4.53 4.53 0 0 0-1.536.258 2.71 2.71 0 0 0-1.174.784 1.91 1.91 0 0 0-.45 1.287c-.01.37.076.736.25 1.063z"/></svg>'
         const twitterIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16"><path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/></svg>'
         const callIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/></svg>'
-        
-        const whatsappSpan = enableWhatsapp ? `<a class="widget-circle widget-whatsapp" href="${links.whatsapp}">${waIcon}</a>` : '';
-        const msgerSpan = enableMsger ? `<a class="widget-circle widget-messenger" href="${links.messenger}">${msgerIcon}</a>` : '';
-        const instaSpan = enableInsta ? `<a class="widget-circle widget-insta" href="${links.instagram}">${instaIcon}</a>` : '';
-        const skypeSpan = enableSkype ? `<a class="widget-circle widget-skype" href="${links.skype}">${skypeIcon}</a>` : '';
-        const twitterSpan = enableTwitter ? `<a class="widget-circle widget-twitter" href="${links.twitter}">${twitterIcon}</a>` : '';
-        const callSpan = enableCall ? `<a class="widget-circle" href=${links.call}">${callIcon}</a>` : '';
-        return {whatsappSpan, msgerSpan, instaSpan, skypeSpan, twitterSpan, callSpan}
+        const caretUp = '<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-caret-up" viewBox="0 0 16 16"><path d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z"/></svg>'
+        const caretDown = '<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16"><path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/></svg>'
+
+        const whatsappSpan = enableWhatsapp ? `<li><a class="widget-circle widget-whatsapp" href="tel:${links.whatsapp}">${waIcon}</a></li>` : '';
+        const msgerSpan = enableMsger ? `<li><a class="widget-circle widget-messenger" target="_blank" href="https://www.facebook.com/${links.messenger}">${msgerIcon}</a></li>` : '';
+        const instaSpan = enableInsta ? `<li><a class="widget-circle widget-insta" target="_blank" href="https://www.instagram.com/${links.instagram}">${instaIcon}</a></li>` : '';
+        const skypeSpan = enableSkype ? `<li><a class="widget-circle widget-skype" target="_blank" href="${links.skype}">${skypeIcon}</a></li>` : '';
+        const twitterSpan = enableTwitter ? `<li><a class="widget-circle widget-twitter" target="_blank" href="https://twitter.com/${links.twitter}">${twitterIcon}</a></li>` : '';
+        const callSpan = enableCall ? `<li><a class="widget-circle widget-call" href=tel:${links.call}">${callIcon}</a></li>` : '';
+
+        return {whatsappSpan, msgerSpan, instaSpan, skypeSpan, twitterSpan, callSpan, caretUp, caretDown}
     }
 
     const generateCode = () => {
         const spans = getIconSpans();
-        const containerStyle = `display: flex; flex-direction: column; position: fixed; ${metaData.position}: 25px; bottom: ${metaData.bottom}px;`;
+        const containerStyle = `display: flex; flex-direction: column; position: fixed; ${metaData.position}: 25px; bottom: ${metaData.bottom}px;width:95px`;
 
         var mainDiv = document.getElementById('widgetsContainer');
         
@@ -118,23 +122,29 @@ function Widget() {
             mainDiv.remove()
         }
 
+        var toggleButton = ''
+        if(enableCall+enableInsta+enableMsger+enableSkype+enableTwitter+enableWhatsapp > 1) {
+
+        }
+
         var mainDiv = document.createElement('div');
         mainDiv.id = 'widgetsContainer'
         
-        mainDiv.innerHTML = `${spans.whatsappSpan}${spans.msgerSpan}${spans.instaSpan}${spans.skypeSpan}${spans.twitterSpan}${spans.callSpan}`;
+        mainDiv.innerHTML = `<ul>${spans.whatsappSpan}${spans.msgerSpan}${spans.instaSpan}${spans.skypeSpan}${spans.twitterSpan}${spans.callSpan}</ul>${toggleButton}`;
         mainDiv.style = `${containerStyle}`;
         document.body.appendChild(mainDiv);
 
         let scriptCode = `
                 var mainDiv = document.createElement("div"); 
                 mainDiv.id = "widgetsContainer"; 
-                mainDiv.innerHTML = '
-                    ${spans.whatsappSpan}
-                    ${spans.msgerSpan}
-                    ${spans.instaSpan}
-                    ${spans.skypeSpan}
-                    ${spans.twitterSpan}
-                    ${spans.callSpan}';
+                mainDiv.innerHTML = '<ul>
+                        ${spans.whatsappSpan}
+                        ${spans.msgerSpan}
+                        ${spans.instaSpan}
+                        ${spans.skypeSpan}
+                        ${spans.twitterSpan}
+                        ${spans.callSpan}
+                    </ul>';
                 
                 mainDiv.style = '${containerStyle}';
                 document.body.appendChild(mainDiv);
@@ -145,7 +155,7 @@ function Widget() {
     
     useEffect(() => {
         generateCode()
-    }, [enableWhatsapp, enableInsta, enableMsger, enableSkype, enableTwitter, enableCall, links, metaData])
+    }, [enableWhatsapp, enableInsta, enableMsger, enableSkype, enableTwitter, enableCall, links, metaData, show])
 
     return (
         <>

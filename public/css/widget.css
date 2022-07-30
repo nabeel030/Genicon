@@ -5,6 +5,7 @@
     display: flex;
     color: white;
     margin-bottom: 15px;
+	transition: width 0.6s, height 0.6s;
 }
 
 .widget-circle svg{
@@ -13,10 +14,13 @@
 
 .widget-circle:hover{
 	color: white;
+	width: 55px;
+	height: 55px;
 }
 
 .widget-skype{
 	background: rgb(0, 175, 240);
+	animation: spin-animation 0.5s;
 }
 
 .widget-insta{
@@ -34,3 +38,25 @@
 .widget-whatsapp{
 	background: #075e54;
 }
+
+.widget-call {
+	background: #ff8d00cf;
+}
+
+#widgetsContainer ul li {
+	list-style: none;
+}
+
+.icn-spinner {
+	animation: spin-animation 0.5s infinite;
+	display: inline-block;
+  }
+
+@keyframes spin-animation {
+	0% {
+	  transform: rotate(0deg);
+	}
+	100% {
+	  transform: rotate(359deg);
+	}
+  }
