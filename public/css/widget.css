@@ -20,7 +20,6 @@
 
 .widget-skype{
 	background: rgb(0, 175, 240);
-	animation: spin-animation 0.5s;
 }
 
 .widget-insta{
@@ -36,7 +35,7 @@
 }
 
 .widget-whatsapp{
-	background: #075e54;
+	background: #4dc247;
 }
 
 .widget-call {
@@ -47,10 +46,20 @@
 	list-style: none;
 }
 
+.widget-caret{
+	background: #02080a;
+	border-radius: 15%;
+	animation: spin-animation 0.5s;
+}
+
+.widget-caret:hover{
+	background: #02080abd;
+}
+
 .icn-spinner {
-	animation: spin-animation 0.5s infinite;
+	animation: spin-animation 0.5s;
 	display: inline-block;
-  }
+}
 
 @keyframes spin-animation {
 	0% {
