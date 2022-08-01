@@ -97,12 +97,12 @@ function Widget() {
         const caretUp = '<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-caret-up" viewBox="0 0 16 16"><path d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z"/></svg>'
         const caretDown = '<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16"><path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/></svg>'
 
-        const whatsappSpan = enableWhatsapp ? `<li><a class="widget-circle widget-whatsapp" href="tel:${links.whatsapp}">${waIcon}</a></li>` : '';
+        const whatsappSpan = enableWhatsapp ? `<li><a class="widget-circle widget-whatsapp" target="_blank" href="tel:${links.whatsapp}">${waIcon}</a></li>` : '';
         const msgerSpan = enableMsger ? `<li><a class="widget-circle widget-messenger" target="_blank" href="https://www.facebook.com/${links.messenger}">${msgerIcon}</a></li>` : '';
         const instaSpan = enableInsta ? `<li><a class="widget-circle widget-insta" target="_blank" href="https://www.instagram.com/${links.instagram}">${instaIcon}</a></li>` : '';
         const skypeSpan = enableSkype ? `<li><a class="widget-circle widget-skype" target="_blank" href="${links.skype}">${skypeIcon}</a></li>` : '';
         const twitterSpan = enableTwitter ? `<li><a class="widget-circle widget-twitter" target="_blank" href="https://twitter.com/${links.twitter}">${twitterIcon}</a></li>` : '';
-        const callSpan = enableCall ? `<li><a class="widget-circle widget-call" href=tel:${links.call}">${callIcon}</a></li>` : '';
+        const callSpan = enableCall ? `<li><a class="widget-circle widget-call" target="_blank" href=tel:${links.call}">${callIcon}</a></li>` : '';
 
         return {whatsappSpan, msgerSpan, instaSpan, skypeSpan, twitterSpan, callSpan, caretUp, caretDown}
     }
@@ -128,6 +128,15 @@ function Widget() {
         }
 
         let scriptCode = `
+                var head = document.getElementsByTagName('HEAD')[0];
+        
+                var link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = 'css/style.css';
+        
+                head.appendChild(link);
+                
                 function showMenu(flag) {
                     var caretUp = document.getElementById('caretup'); 
                     var caretDown = document.getElementById('caretdown');
@@ -165,7 +174,7 @@ function Widget() {
     const downloadFile = () => {
         const code = generateCode();
         let anchor = document.getElementById('downloadbtn');
-        anchor.href = window.URL.createObjectURL(new Blob([code], {type: "text/plain"}));
+        anchor.href = window.URL.createObjectURL(new Blob([code], {type: "text/javascript"}));
         window.location.reload();
     }
 
