@@ -8,12 +8,19 @@ function Widget() {
     const [enableTwitter, setEnableTwitter] = useState(false)
     const [enableCall, setEnableCall] = useState(false)
     const [show, setShow] = useState(true);
+    const [widgetStyle, setWidgetStyle] = useState({display: 'flex', flexDirection: 'column', position: 'fixed', bottom: '0px', width: '95px'});
 
     const [metaData, setMetaData] = useState({
         position: 'right',
         bottom: '0',
         message: 'Message'
     })
+
+    useEffect(() => {
+        let newStyle = {display: 'flex', flexDirection: 'column', position: 'fixed', bottom: `${metaData.bottom}px`, width: '95px'};
+        newStyle[metaData.position] = '25px';
+        setWidgetStyle(newStyle);
+    }, [metaData]);
 
     const defaultLinks = {
         whatsapp: '#',
@@ -351,11 +358,11 @@ function Widget() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className='form-group mt-2'>
+                                            {/* <div className='form-group mt-2'>
                                                 <label className='form-label'>Action message</label>
                                                 <input type='text' className='form-control' placeholder='Instant message' 
                                                     onChange={(e) => setMetaData({...metaData, message: e.target.value})}/>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </div>
@@ -366,7 +373,7 @@ function Widget() {
                             <div className="platform-widgets-heading">
                                 <div className='row justify-content-md-center'>
                                     <div className='col-md-6 platform-widgets'>
-                                        <a className='btn btn-success' id='downloadbtn' download='social-widgets.js' href='javascript:void()'
+                                        <a className='btn btn-success' id='downloadbtn' download='social-widgets.js' href='#'
                                             onClick={() => downloadFile()}>
                                             Dowload script file
                                         </a>
@@ -374,7 +381,7 @@ function Widget() {
                                 </div>
                             </div>
                         </header>
-                        <div id='widgetsContainer' style={{display: 'flex', flexDirection: 'column', position: 'fixed', right: '25px', bottom: '12px', width: '95px'}}>
+                        <div id='widgetsContainer' style={widgetStyle}>
                            {
                                 (show || enabledButtonsCount() == 1) && 
                                 <ul>
