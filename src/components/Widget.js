@@ -133,7 +133,7 @@ function Widget() {
                 var link = document.createElement('link');
                 link.rel = 'stylesheet';
                 link.type = 'text/css';
-                link.href = 'css/style.css';
+                link.href = 'https://socialwidgets.herokuapp.com/css/styles.css';
         
                 head.appendChild(link);
                 
