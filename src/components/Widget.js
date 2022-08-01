@@ -175,14 +175,13 @@ function Widget() {
                 document.body.appendChild(mainDiv);
         `;
 
-        return scriptCode.replace(/<!--(.*?)-->|\s\B/gm, '');
+        return scriptCode.replace(/<!--(.*?)-->|\s+\B(?=([^"]*"[^"]*")*[^"]*$)/gm, '');
     }
 
     const downloadFile = () => {
         const code = generateCode();
         let anchor = document.getElementById('downloadbtn');
         anchor.href = window.URL.createObjectURL(new Blob([code], {type: "text/javascript"}));
-        window.location.reload();
     }
 
     return (
