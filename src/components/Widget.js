@@ -350,7 +350,7 @@ function Widget() {
                                                 <div className='col-md-6'>
                                                     <div className='form-group'>
                                                         <div className='input-group'>
-                                                            <input type='number' className='form-control' placeholder='Bottom Spacing'
+                                                            <input type='number' className='form-control' min="0" placeholder='Bottom Spacing'
                                                                 onChange={(e) => setMetaData({...metaData, bottom: e.target.value})} />
                                                             <span className='input-group-text'>px</span>                                            
                                                         </div>
