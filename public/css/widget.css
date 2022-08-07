@@ -6,7 +6,7 @@
     color: white;
     margin-bottom: 15px;
 	transition: width 0.6s, height 0.6s;
-	animation: spin-animation 1s;
+	animation: spin-animation 0.5s;
 
 }
 
@@ -49,12 +49,7 @@
 }
 
 .widget-caret{
-	background: #02080a;
 	border-radius: 50%;
-}
-
-.widget-caret:hover{
-	background: #02080abd;
 }
 
 .icn-spinner {

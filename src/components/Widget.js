@@ -13,7 +13,8 @@ function Widget() {
     const [metaData, setMetaData] = useState({
         position: 'right',
         bottom: '0',
-        message: 'Message'
+        message: 'Message',
+        toggleBtnColor: '#000'
     })
 
     useEffect(() => {
@@ -125,10 +126,10 @@ function Widget() {
         let toggleButton = '';
 
         if(enabledButtonsCount() > 1 ) {
-            toggleButton = `<ul><span id="caretup" class="widget-circle widget-caret" onClick="showMenu(true)" style="display: flex">
+            toggleButton = `<ul><span id="caretup" class="widget-circle widget-caret" onClick="showMenu(true)" style="display: flex; background: ${metaData.toggleBtnColor}">
                                 ${spans.caretUp}
                             </span>
-                            <span id="caretdown" class="widget-circle widget-caret" onClick="showMenu(false)" style="display: none">
+                            <span id="caretdown" class="widget-circle widget-caret" onClick="showMenu(false)" style="display: none; background: ${metaData.toggleBtnColor}">
                                 ${spans.caretDown}
                             </span></ul>
                             `
@@ -336,7 +337,24 @@ function Widget() {
                             <div className="platform-widgets-heading">
                                 <div className='row justify-content-md-center'>
                                     <div className='col-md-6 platform-widgets'>
+                                        <div className='col-md-12'>
+                                        </div>
                                         <div className='platform-widgets-form text-left'>
+                                            <div className='row'>
+                                                <div className='col-md-3'>
+                                                    <label class="form-label">Toggle Button Color</label>
+                                                </div>
+                                                <div className='col-md-9'>
+                                                    <div className='form-group mt-2'>
+                                                        <input style={{width: '44%'}} type="color" 
+                                                            className="form-control form-control-color"
+                                                            onChange={(e) => setMetaData({...metaData, toggleBtnColor: e.target.value})}
+                                                            value={metaData.toggleBtnColor} 
+                                                            title="Choose your color" />
+                                                    </div>
+                                                </div>
+                                                <div className='col-md-5'></div>
+                                            </div>
                                             Position
                                             <div className='row'>
                                                 <div className='col-md-6'>
@@ -357,11 +375,6 @@ function Widget() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            {/* <div className='form-group mt-2'>
-                                                <label className='form-label'>Action message</label>
-                                                <input type='text' className='form-control' placeholder='Instant message' 
-                                                    onChange={(e) => setMetaData({...metaData, message: e.target.value})}/>
-                                            </div> */}
                                         </div>
                                     </div>
                                 </div>
@@ -438,7 +451,7 @@ function Widget() {
                             <ul>
                                 {
                                     (enableCall + enableInsta + enableMsger + enableSkype + enableTwitter+ enableWhatsapp) > 1 &&
-                                    <span className='widget-circle widget-caret' onClick={() => setShow(!show)}>
+                                    <span style={{background: metaData.toggleBtnColor}} className='widget-circle widget-caret' onClick={() => setShow(!show)}>
                                         {
                                             !show ? 
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-caret-up" viewBox="0 0 16 16"><path d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z"/></svg>
