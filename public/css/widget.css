@@ -6,6 +6,8 @@
     color: white;
     margin-bottom: 15px;
 	transition: width 0.6s, height 0.6s;
+	animation: spin-animation 1s;
+
 }
 
 .widget-circle svg{
@@ -48,8 +50,7 @@
 
 .widget-caret{
 	background: #02080a;
-	border-radius: 15%;
-	animation: spin-animation 0.5s;
+	border-radius: 50%;
 }
 
 .widget-caret:hover{
@@ -60,6 +61,20 @@
 	animation: spin-animation 0.5s;
 	display: inline-block;
 }
+
+
+.widgets-list {
+	animation: spin-animation-list 0.5s;
+}
+
+@keyframes spin-animation-list {
+	0% {
+		margin-bottom: 0%;
+	  }
+	  100% {
+		margin-bottom: 18%;
+	  }
+  }
 
 @keyframes spin-animation {
 	0% {

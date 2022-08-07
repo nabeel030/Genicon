@@ -383,7 +383,7 @@ function Widget() {
                         <div id='widgetsContainer' style={widgetStyle}>
                            {
                                 (show || enabledButtonsCount() == 1) && 
-                                <ul>
+                                <ul className='widgets-list'>
                                     {
                                         enableWhatsapp && 
                                         <li>
