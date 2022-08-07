@@ -69,7 +69,7 @@
 
 @keyframes spin-animation-list {
 	0% {
-		margin-bottom: 0%;
+		margin-bottom: -10%;
 	  }
 	  100% {
 		margin-bottom: 18%;
