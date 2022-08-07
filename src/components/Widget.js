@@ -330,7 +330,7 @@ function Widget() {
                 </div>
             </header>
             {
-                (enableWhatsapp || enableCall || enableInsta || enableMsger || enableSkype || enableTwitter) && (
+                enabledButtonsCount() && (
                     <>
                         <header className='platform-widgets-container pt-4'>
                             <div className="platform-widgets-subheading">2. Customize button</div>
@@ -340,21 +340,25 @@ function Widget() {
                                         <div className='col-md-12'>
                                         </div>
                                         <div className='platform-widgets-form text-left'>
-                                            <div className='row'>
-                                                <div className='col-md-3'>
-                                                    <label class="form-label">Toggle Button Color</label>
-                                                </div>
-                                                <div className='col-md-9'>
-                                                    <div className='form-group mt-2'>
-                                                        <input style={{width: '44%'}} type="color" 
-                                                            className="form-control form-control-color"
-                                                            onChange={(e) => setMetaData({...metaData, toggleBtnColor: e.target.value})}
-                                                            value={metaData.toggleBtnColor} 
-                                                            title="Choose your color" />
+                                            {
+                                                enabledButtonsCount() > 1 && (
+                                                    <div className='row'>
+                                                        <div className='col-md-3'>
+                                                            <label class="form-label">Toggle Button Color</label>
+                                                        </div>
+                                                        <div className='col-md-9'>
+                                                            <div className='form-group mt-2'>
+                                                                <input style={{width: '44%'}} type="color" 
+                                                                    className="form-control form-control-color"
+                                                                    onChange={(e) => setMetaData({...metaData, toggleBtnColor: e.target.value})}
+                                                                    value={metaData.toggleBtnColor} 
+                                                                    title="Choose your color" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col-md-5'></div>
                                                     </div>
-                                                </div>
-                                                <div className='col-md-5'></div>
-                                            </div>
+                                                )
+                                            }
                                             Position
                                             <div className='row'>
                                                 <div className='col-md-6'>
