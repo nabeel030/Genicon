@@ -12,7 +12,7 @@ function Widget() {
 
     const [metaData, setMetaData] = useState({
         position: 'right',
-        bottom: '0',
+        bottom: 5,
         message: 'Message',
         toggleBtnColor: '#000'
     })
