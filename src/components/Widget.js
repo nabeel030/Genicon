@@ -386,6 +386,7 @@ function Widget() {
                                             onClick={() => downloadFile()}>
                                             Dowload script file
                                         </a>
+                                        <p class="m-0">Add downloaded script just before the closing body tag of your website.</p>
                                     </div>
                                 </div>
                             </div>
