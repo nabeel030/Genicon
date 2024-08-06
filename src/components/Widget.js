@@ -141,7 +141,7 @@ function Widget() {
                 var link = document.createElement('link');
                 link.rel = 'stylesheet';
                 link.type = 'text/css';
-                link.href = 'https://socialwidgets.herokuapp.com/css/widget.css';
+                link.href = 'https://social-widgets.netlify.app/css/widget.css';
         
                 head.appendChild(link);
                 
